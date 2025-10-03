@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Editar País{% endblock %}
+
+{% block content %}
+    <h1 class="mb-4">Editar País: {{ country.name }}</h1>
+
+    <form method="post" novalidate class="card p-4 shadow-sm">
+        {% csrf_token %}
+
+        <!-- Campo Nombre -->
+        <div class="mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name|add_class:"form-control" }}
+            {% if form.name.errors %}
+                <div class="text-danger small">{{ form.name.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Campo Abrev -->
+        <div class="mb-3">
+            {{ form.abrev.label_tag }}
+            {{ form.abrev|add_class:"form-control" }}
+            {% if form.abrev.errors %}
+                <div class="text-danger small">{{ form.abrev.errors }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Campo Estado -->
+        <div class="form-check mb-3">
+            {{ form.status|add_class:"form-check-input" }}
+            {{ form.status.label_tag }}
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex gap-2">
+            <button class="btn btn-success" type="submit">Guardar</button>
+            <a class="btn btn-secondary" href="{% url 'authentication_app:country_list' %}">
+                Volver
+            </a>
+        </div>
+    </form>
+{% endblock %}

@@ -60,7 +60,7 @@ ROOT_URLCONF = 'banking.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], # agrega esta línea
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,8 +72,13 @@ TEMPLATES = [
     },
 ]
 
+
+
 WSGI_APPLICATION = 'banking.wsgi.application'
 
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static'] # carpeta para css/js
+STATIC_ROOT = BASE_DIR / 'staticfiles' # para collectstatic en producción
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -88,6 +93,15 @@ DATABASES = {
         'PORT':env('DB_PORT', default = '5432')
         
         
+    },
+    
+    'supabase': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': env('S_DB_HOST'),
+        'NAME': env('S_DB_NAME'),
+        'USER': env('S_DB_USER'),
+        'PASSWORD':env('S_DB_PASSWORD'),
+        'PORT':env('S_DB_PORT'),
     },
     
     'local':{
