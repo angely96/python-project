@@ -10,7 +10,7 @@
         <!-- Campo Nombre -->
         <div class="mb-3">
             {{ form.name.label_tag }}
-            {{ form.name|add_class:"form-control" }}
+            {{ form.name }}
             {% if form.name.errors %}
                 <div class="text-danger small">{{ form.name.errors }}</div>
             {% endif %}
@@ -19,7 +19,7 @@
         <!-- Campo Abrev -->
         <div class="mb-3">
             {{ form.abrev.label_tag }}
-            {{ form.abrev|add_class:"form-control" }}
+            {{ form.abrev }}
             {% if form.abrev.errors %}
                 <div class="text-danger small">{{ form.abrev.errors }}</div>
             {% endif %}
@@ -27,7 +27,7 @@
 
         <!-- Campo Estado -->
         <div class="form-check mb-3">
-            {{ form.status|add_class:"form-check-input" }}
+            {{ form.status }}
             {{ form.status.label_tag }}
         </div>
 

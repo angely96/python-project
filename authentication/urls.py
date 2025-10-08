@@ -10,5 +10,7 @@ urlpatterns=[
     #path("cities",views.cities,name="cities")
     path("countries/", views.country_list, name="country_list"),
     path("countries/<int:pk>/edit/", views.country_edit, name="country_edit"),
+    path('countries/delete/<int:pk>/', views.country_delete, name='country_delete'),
+
 ]
 
